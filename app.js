@@ -20,7 +20,7 @@ function myFunction(){
   timeStamp=Math.floor(Date.now()/1000);
   url="https://api.twitter.com/oauth/request_token?oauth_callback=https://abhishekkamat.github.io/LogIn-Twitter/redirect.html";
   let xhr = new XMLHttpRequest();
-  xhr.open("POST",)
+  xhr.open("POST",url);
   xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+appID+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
 
   xhr.onreadystatechange = function () {
