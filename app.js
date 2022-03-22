@@ -24,7 +24,7 @@ function myFunction(){
   xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+appID+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
 
   xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
+    if (xhr.readyState === 200) {
         console.log(xhr.responseText);
     }};
 
