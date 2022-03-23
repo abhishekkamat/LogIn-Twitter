@@ -18,13 +18,14 @@ function myFunction(){
   bearer_token=codes[5];
 
   timeStamp=Math.floor(Date.now()/1000);
+  console.log("TimeStamp:"+timeStamp); 
   url="https://api.twitter.com/oauth/request_token?oauth_callback=https://abhishekkamat.github.io/LogIn-Twitter/redirect.html";
   let xhr = new XMLHttpRequest();
-  xhr.open("POST",url);
-  xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+appID+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
-
+  xhr.open("GET",url);
+  xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+API_key+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
+  xhr.send();
   xhr.onreadystatechange = function () {
-    if (xhr.readyState === 200) {
+    if (xhr.readyState === 4) {
         console.log(xhr.responseText);
     }};
 
