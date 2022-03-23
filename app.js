@@ -1,5 +1,7 @@
 var auth_nonce_list=[];
 var acquiredText;
+
+//Fetching Data from txt file(Substitute of fetching data from backend)
 fetch('Keys.txt')
 .then(response=>response.text())
 .then(text=>saveData(text));
@@ -11,23 +13,30 @@ var appID="lMLWp1bPGFR07c684PHjDzqEO";
 function myFunction(){
   let auth_nonce1=generateAuth_Nonce();
   authnonce=auth_nonce1[1];
+
+
+  //separate all codes received from txt files, and save them in separate variables
   codes=acquiredText.split(" ");
   console.log(codes);
   API_key=codes[1];
   Key_secret=codes[3];
   bearer_token=codes[5];
 
+
   timeStamp=Math.floor(Date.now()/1000);
   console.log("TimeStamp:"+timeStamp); 
   let url="https://api.twitter.com/oauth/request_token?oauth_callback=https://abhishekkamat.github.io/LogIn-Twitter/redirect.html";
   let uri=encodeURI(url);
+  
+  //Creating and sending a POST request to the url
   let xhr = new XMLHttpRequest();
-  xhr.open("GET",uri);
-  xhr.setRequestHeader("Access-Control-Allow-Origin","*");
+
+  xhr.open("POST",uri);
   xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+API_key+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
+  xhr.setRequestHeader("Access-Control-Allow-Origin","*");
   xhr.send();
   xhr.onreadystatechange = function () {
-    if (xhr.readyState === 200) {
+    if (xhr.readyState === 4) {
         console.log(xhr.responseText);
     }};
 
@@ -35,7 +44,6 @@ function myFunction(){
   }
 
 async function saveData(text){
-  
   acquiredText=text;
   return acquiredText;
   
@@ -45,14 +53,20 @@ function generateAuth_Nonce(){
   var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
   var result = ""
   var charactersLength = characters. length;
+
+  //Generating a random 6 digit alphanumeric string
   for ( var i = 0; i < 6 ; i++ ) {
   result += characters. charAt(Math. floor(Math. random() * charactersLength));
   }
+
+  //Checking whether the created string already exists
   authnonce_index=(check_Unique(result,auth_nonce_list))-1;
   auth_nonce=auth_nonce_list[authnonce_index];
   var arr=[];
   arr.push(authnonce_index);
   arr.push(auth_nonce);
+
+
   return arr;
 }
 
