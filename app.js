@@ -27,14 +27,17 @@ function myFunction(){
   console.log("TimeStamp:"+timeStamp); 
   let url="https://api.twitter.com/oauth/request_token?oauth_callback=https://abhishekkamat.github.io/LogIn-Twitter/redirect.html";
   let uri=encodeURI(url);
+  console.log(uri);
   
   //Creating and sending a POST request to the url
   let xhr = new XMLHttpRequest();
   document.domain="abhishekkamat.github.io";
   xhr.open("POST",uri);
-  xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+API_key+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
+  /*xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+API_key+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
   xhr.setRequestHeader("Access-Control-Allow-Origin","*");
-  
+  */
+
+  data=
   xhr.send();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
