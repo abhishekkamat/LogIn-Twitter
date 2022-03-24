@@ -26,13 +26,12 @@ function myFunction(){
   timeStamp=Math.floor(Date.now()/1000);
   console.log("TimeStamp:"+timeStamp); 
   let url="https://api.twitter.com/oauth/request_token?oauth_callback=https:https%3A%2F%2Fabhishekkamat.github.io%2FLogIn-Twitter%2Fredirect.html";
-  let uri=encodeURIComponent(url);
-  console.log(uri);
+  console.log(url);
   
   //Creating and sending a POST request to the url
   let xhr = new XMLHttpRequest();
   document.domain="abhishekkamat.github.io";
-  xhr.open("POST",uri);
+  xhr.open("POST",url);
   /*xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+API_key+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
   xhr.setRequestHeader("Access-Control-Allow-Origin","*");
   */
