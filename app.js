@@ -21,6 +21,9 @@ function myFunction(){
   API_key=codes[1];
   Key_secret=codes[3];
   bearer_token=codes[5];
+  console.log(API_key);
+  console.log(Key_secret);
+  console.log(bearer_token);
 
 
   timeStamp=Math.floor(Date.now()/1000);
