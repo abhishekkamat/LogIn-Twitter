@@ -10,6 +10,25 @@ fetch('Keys.txt')
 var appID="lMLWp1bPGFR07c684PHjDzqEO";
 
 
+const myFunction1 = async (url,API_key,authnonce,timeStamp) => {
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json',
+                'Authorization': 'OAuth oauth_consumer_key='+API_key+', oauth_nonce='+authnonce+', oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp='+timeStamp+', oauth_version=1.0'},
+    })
+    const data = await response.json();
+    if (data) {
+        console.log(data)
+    }
+  } 
+  catch(error) {
+    alert(error);
+  }
+};
+
+
+
 function myFunction(){
   let auth_nonce1=generateAuth_Nonce();
   authnonce=auth_nonce1[1];
@@ -31,21 +50,23 @@ function myFunction(){
   let url="https://api.twitter.com/oauth/request_token?oauth_callback=https:https%3A%2F%2Fabhishekkamat.github.io%2FLogIn-Twitter%2Fredirect.html";
   console.log(url);
   
+  myFunction1(url,API_key,authnonce,timeStamp);
+
   //Creating and sending a POST request to the url
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST",url);
-  xhr.setRequestHeader("Access-Control-Allow-Origin","https://abhishekkamat.github.io/LogIn-Twitter/");
-  xhr.setRequestHeader("Access-Control-Allow-Methods","POST,GET,OPTIONS,DELETE,PUT");
-  xhr.setRequestHeader("Access-Control-Allow-Headers","Authorization");
-  xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+API_key+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
-  console.log(xhr);
+  // let xhr = new XMLHttpRequest();
+  // xhr.open("POST",url);
+  // xhr.setRequestHeader("Access-Control-Allow-Origin","https://abhishekkamat.github.io/LogIn-Twitter/");
+  // xhr.setRequestHeader("Access-Control-Allow-Methods","POST,GET,OPTIONS,DELETE,PUT");
+  // xhr.setRequestHeader("Access-Control-Allow-Headers","Authorization");
+  // xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+API_key+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
+  // console.log(xhr);
 
   
-  xhr.send();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-        console.log(xhr.responseText);
-    }};
+  // xhr.send();
+  // xhr.onreadystatechange = function () {
+  //   if (xhr.readyState === 4) {
+  //       console.log(xhr.responseText);
+  //   }};
 
 
   }
