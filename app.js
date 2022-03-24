@@ -36,6 +36,8 @@ function myFunction(){
   xhr.open("POST",url);
   xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+API_key+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
   xhr.setRequestHeader("Access-Control-Allow-Origin","https://abhishekkamat.github.io/LogIn-Twitter/");
+  xhr.setRequestHeader("Access-Control-Allow-Methods","POST,GET,OPTIONS,DELETE,PUT");
+  
   
   xhr.send();
   xhr.onreadystatechange = function () {
