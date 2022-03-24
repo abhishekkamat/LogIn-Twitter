@@ -20,6 +20,7 @@ const myFunction1 = async (url,API_key,authnonce,timeStamp) => {
         'Authorization': 'OAuth oauth_consumer_key='+API_key+', oauth_nonce='+authnonce+', oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp='+timeStamp+', oauth_version=1.0'
       },
     });
+    console.log(response);
     const data = await response.json();
     if (data) {
       console.log(data)
@@ -34,7 +35,7 @@ const myFunction1 = async (url,API_key,authnonce,timeStamp) => {
 
 function myFunction(){
   let auth_nonce1=generateAuth_Nonce();
-  authnonce=auth_nonce1[1];
+  let authnonce=auth_nonce1[1];
 
 
   //separate all codes received from txt files, and save them in separate variables
