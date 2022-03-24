@@ -14,6 +14,7 @@ const myFunction1 = async (url,API_key,authnonce,timeStamp) => {
   try {
     const response = await fetch(url, {
       method: 'POST',
+      mode: 'no-cors',
       headers: {'Content-Type': 'application/json',
                 'Authorization': 'OAuth oauth_consumer_key='+API_key+', oauth_nonce='+authnonce+', oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp='+timeStamp+', oauth_version=1.0'},
     })
