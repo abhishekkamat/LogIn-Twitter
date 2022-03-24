@@ -26,7 +26,7 @@ function myFunction(){
   timeStamp=Math.floor(Date.now()/1000);
   console.log("TimeStamp:"+timeStamp); 
   let url="https://api.twitter.com/oauth/request_token?oauth_callback=https://abhishekkamat.github.io/LogIn-Twitter/redirect.html";
-  let uri=encodeURI(url);
+  let uri=encodeURIComponent(url);
   console.log(uri);
   
   //Creating and sending a POST request to the url
