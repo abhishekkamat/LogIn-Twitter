@@ -59,7 +59,7 @@ function myFunction(){
   //Creating and sending a POST request to the url
   let xhr = new XMLHttpRequest();
   xhr.open("POST",url);
-  xhr.setRequestHeader("Access-Control-Allow-Origin","https://abhishekkamat.github.io/LogIn-Twitter/");
+  xhr.setRequestHeader("Access-Control-Allow-Origin","*");
   xhr.setRequestHeader("Access-Control-Allow-Methods","POST,GET,OPTIONS,DELETE,PUT");
   xhr.setRequestHeader("Access-Control-Allow-Headers","Authorization");
   xhr.setRequestHeader("Authorization", "OAuth oauth_consumer_key="+API_key+", oauth_nonce="+authnonce+", oauth_signature=oauth_signature, oauth_signature_method=HMAC-SHA1, oauth_timestamp="+timeStamp+", oauth_version=1.0");
